@@ -1,0 +1,61 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+.results-container {
+    background: white;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info p {
+    margin: 10px 0;
+    font-weight: bold; /* Makes text bold */
+    color: #333; /* Sets a standard dark color */
+}
+
+.form-container {
+    background: white;
+    width: 90%; /* Adjust width to fit smaller screens */
+    max-width: 500px; /* Maximum width for the form */
+    margin: 20px; /* Auto-margin for horizontal centering */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Enables flexbox for the container */
+    flex-direction: column; /* Stacks form elements vertically */
+    justify-content: center; /* Centers content vertically within the container */
+}
+
+input[type="text"], input[type="number"] {
+    width: calc(100% - 22px); /* Adjusts width to ensure proper padding */
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+}
+
+label {
+    font-weight: bold;
+}
+
+button, input[type="submit"] {
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #5058e5;
+}
