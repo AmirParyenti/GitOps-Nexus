@@ -1,2 +1,0 @@
-# Total Project Explanation
-
