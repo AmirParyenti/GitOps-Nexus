@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="results-container">
+        <h1>Results</h1>
+        {% for user in users %}
+        <div class="user-info">
+            <p class="label"><span class="label">Name:</span> {{ user['name'] }}</p>
+            <p class="label"><span class="label">Second Name:</span> {{ user['second_name'] }}</p>
+            <p class="label"><span class="label">Age:</span> {{ user['age'] }}</p>
+            <p class="label"><span class="label">ID:</span> {{ user['id_number'] }}</p>
+            <p class="label"><span class="label">City:</span> {{ user['city'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
