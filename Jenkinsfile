@@ -2,7 +2,7 @@ pipeline {
     agent {
         kubernetes {
             label "jenkins-agent"
-            idleMinutes 5 // if the pod doesn't work 5 minutes the pod will fall downn
+            idleMinutes 5 // if the pod doesn't work 5 minutes the pod will fall down
             yamlFile "build-pod.yaml"
             defaultContainer "ez-docker-helm-build"
         }
@@ -10,7 +10,7 @@ pipeline {
     environment {
         GITLAB_CREDS = "gitlab"
         DOCKER_IMAGE = "amirparyenti/application_app"
-        PROJECT_ID = "59011908"
+        PROJECT_ID = "59473442"
         GITLAB_URL = "https://gitlab.com"
         IMAGE_VERSION = "v${BUILD_NUMBER}"
     }
@@ -43,7 +43,7 @@ pipeline {
                         --form "source_branch=${env.BRANCH_NAME}" \
                         --form "target_branch=main" \
                         --form "title=MR from ${env.BRANCH_NAME} into main" \
-                        --form "remove_source_branch=true"
+                        --form "remove_source_branch=false"
                         """, returnStdout: true).trim()
                         if (response.startsWith("20")) {
                             echo "Merge request created successfully."
@@ -107,20 +107,15 @@ pipeline {
             }
         }
     }
-}
-
-        // stage("Check Last Commit Author") {
-        //     steps {
-        //         script {
-        //             // Fetch the latest commit informationnn
-        //             def authorName = sh(
-        //                 script: "git log origin/main -1 --pretty=format:'%an'",
-        //                 returnStdout: true
-        //             ).trim()
-        //             if (authorName == "Jenkins") {
-        //                 currentBuild.result = 'SUCCESS'
-        //                 error "Skipping build due to Jenkins commit"
-        //             }
-        //         }
-        //     }
-        // }
+    post {
+        always {
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                            [pattern: '.propsfile', type: 'EXCLUDE']])
+            
+        }
+    }
+}    
