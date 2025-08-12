@@ -8,5 +8,5 @@
 
 - Enhanced security by using Kubernetes Secrets for secure and encrypted database access from the application.
 
-- Integrated monitoring with Prometheus & Grafana, set up basic alerts, and configured email notifications.
+- Integrated monitoring with Prometheus & Grafana, set up custom metrics, alerts and dashboards.
 
